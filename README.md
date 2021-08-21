@@ -1,1 +1,33 @@
-"# title\n\n  ## Description\n  describe\n\n  ## Table of Contents\n  - \n\n  ## Installation\n  npm i\n\n  ## Usage\n  usage\n\n  ## Credits\n  contributions\n\n## License\n    This project is licensed with undefined.\n\n  ## Tests\n  npm run test\n"
+# README Generator ![License Image](https://img.shields.io/badge/license-MIT-blue)
+
+## Description
+
+This app prompts the user with questions in the command line and creates a README file based on the user's input.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [GitHub Profile](#github-profile)
+- [Contact by Email](#email)
+
+## Installation
+
+Run npm i to install necessary libraries.
+
+## Usage
+
+To use, open the file and run a 'node index.js' Answer each prompt with the exact text you wish to appear on the README. A new README will be generated in a new directory called 'Generated.' The links to your GitHub profile will be active
+
+## License
+
+This project is licensed with MIT.
+
+### GitHub Profile
+
+[My Profile](https://github.com/audrey-g37)
+
+### Email
+
+audrey.gillies@gmail.com

@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateMarkdown = require("./utils/generateMarkdown");
+const markdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -25,10 +25,11 @@ const questions = [
     type: "input",
     message: "Enter the usage information ",
     name: "usageInfo",
+    default: "node index.js",
   },
   {
     type: "input",
-    message: "Enter the contribution guidelines ",
+    message: "Enter the credits and contribution guidelines ",
     name: "contribution",
   },
   {
@@ -41,12 +42,12 @@ const questions = [
     type: "list",
     message: "Choose a license ",
     name: "license",
-    choices: ["MIT", "BSD", "GPL", "IBM"],
+    choices: ["MIT", "BSD", "GPL"],
   },
   {
     type: "input",
     message: "Enter your GitHub username: ",
-    name: "githubUsername",
+    name: "github",
   },
   {
     type: "input",
@@ -56,20 +57,24 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-//     fs.writeFile(` ${fileName}`, `${generateMarkdown(data)}`, (err) =>{
-//         err ? console.log(err) : console.log("Done.");
-//     });
+function writeToFile(fileName, data) {
+  fs.writeFile(`./Generated/${fileName}`, data, (err) => {
+    err ? console.log(err) : console.log("File was created.");
+  });
+}
 
-// }
+function makeDirectory() {
+  fs.mkdir("./Generated", { recursive: true }, (err) => {
+    if (err) throw err;
+  });
+}
 
 // TODO: Create a function to initialize app
 function init() {
   inquirer.prompt(questions).then((data) => {
-    data = generateMarkdown(data);
-    fs.writeFile("README.md", JSON.stringify(data), (err) => {
-      err ? console.log(err) : console.log("File was created.");
-    });
+    makeDirectory();
+
+    writeToFile("README.md", markdown(data));
   });
 }
 
