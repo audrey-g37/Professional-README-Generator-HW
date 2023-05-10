@@ -35,42 +35,68 @@ function generateMarkdown(data) {
 		github = '',
 		email = ''
 	} = data;
-	return `# ${title} ![License Image](${renderLicenseLink(license)})
 
-  ## Description
-  ${description}
+	// original text
+	let headerText = `# ${title} ![License Image](${renderLicenseLink(license)})`;
+	let tableOfContentsText = `## Table of Contents`;
+	let readmeText = ``;
 
-  ## Table of Contents
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Contributing](#contribution-guidelines)
-  - [License](#license)
-  - [Test](#test-instructions)
-  - [GitHub Profile](#github-profile)
-  - [Contact by Email](#email)
-
-  ## Installation
-  ${installInstructions}
-
-  ## Usage
-  ${usageInfo}
-
-  ## Contribution Guidelines
-  ${contribution}
-
-  ## License
-  ${renderLicenseBadge(license)}
-
-
-  ## Test Instructions
-  ${testIns}
-
-  ### GitHub Profile
-  [My Profile](https://github.com/${github})
-
-  ### Email
-  ${email}
-`;
+	if (description)
+		headerText += `
+## Description
+${description}`;
+	if (installInstructions) {
+		readmeText += `
+## Installation
+${installInstructions}`;
+		tableOfContentsText += `
+- [Installation](#installation)`;
+	}
+	if (usageInfo) {
+		readmeText += `
+## Usage
+${usageInfo}`;
+		tableOfContentsText += `
+- [Usage](#usage)`;
+	}
+	if (contribution) {
+		readmeText += `
+## Contribution Guidelines
+  ${contribution}`;
+		tableOfContentsText += `
+- [Contributing](#contribution-guidelines)`;
+	}
+	if (license) {
+		readmeText += `
+## License
+${renderLicenseBadge(license)}`;
+		tableOfContentsText += `
+- [License](#license)`;
+	}
+	if (testIns) {
+		readmeText += `
+## Test Instructions
+${testIns}`;
+		tableOfContentsText += `
+- [Test](#test-instructions)`;
+	}
+	if (github) {
+		readmeText += `
+### GitHub Profile
+[My Profile](https://github.com/${github})`;
+		tableOfContentsText += `
+- [GitHub Profile](#github-profile)`;
+	}
+	if (email) {
+		readmeText += `
+### Email
+${email}`;
+		tableOfContentsText += `
+- [Contact by Email](#email)`;
+	}
+	return `${headerText}
+${tableOfContentsText}
+${readmeText}`;
 }
 
 module.exports = generateMarkdown;
