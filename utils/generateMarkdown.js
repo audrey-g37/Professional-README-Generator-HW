@@ -1,33 +1,44 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if (license !== "") {
-    return `This project is licensed with ${license}.`;
-  }
-  return "";
+	if (license !== '') {
+		return `This project is licensed with ${license}.`;
+	}
+	return '';
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  if (license === "MIT") {
-    return "https://img.shields.io/badge/license-MIT-blue";
-  }
-  if (license === "BSD") {
-    return "https://img.shields.io/badge/license-BSD-blue";
-  }
-  if (license === "GPL") {
-    return "https://img.shields.io/badge/license-GPL-blue";
-  }
-  return "";
+	if (license === 'MIT') {
+		return 'https://img.shields.io/badge/license-MIT-blue';
+	}
+	if (license === 'BSD') {
+		return 'https://img.shields.io/badge/license-BSD-blue';
+	}
+	if (license === 'GPL') {
+		return 'https://img.shields.io/badge/license-GPL-blue';
+	}
+	return '';
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title} ![License Image](${renderLicenseLink(data.license)})
+	const {
+		title = '',
+		license = '',
+		description = '',
+		installInstructions = '',
+		usageInfo = '',
+		contribution = '',
+		testIns = '',
+		github = '',
+		email = ''
+	} = data;
+	return `# ${title} ![License Image](${renderLicenseLink(license)})
 
   ## Description
-  ${data.description}
+  ${description}
 
   ## Table of Contents
   - [Installation](#installation)
@@ -39,26 +50,26 @@ function generateMarkdown(data) {
   - [Contact by Email](#email)
 
   ## Installation
-  ${data.installInstructions}
+  ${installInstructions}
 
   ## Usage
-  ${data.usageInfo}
+  ${usageInfo}
 
   ## Contribution Guidelines
-  ${data.contribution}
+  ${contribution}
 
   ## License
-  ${renderLicenseBadge(data.license)}
+  ${renderLicenseBadge(license)}
 
 
   ## Test Instructions
-  ${data.testIns}
+  ${testIns}
 
   ### GitHub Profile
-  [My Profile](https://github.com/${data.github})
+  [My Profile](https://github.com/${github})
 
   ### Email
-  ${data.email}
+  ${email}
 `;
 }
 
