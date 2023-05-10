@@ -90,7 +90,7 @@ ${testIns}`;
 	if (email) {
 		readmeText += `
 ### Email
-${email}`;
+[${email}](mailto:${email})`;
 		tableOfContentsText += `
 - [Contact by Email](#email)`;
 	}
