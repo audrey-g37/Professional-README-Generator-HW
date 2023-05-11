@@ -1,65 +1,88 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if (license !== "") {
-    return `This project is licensed with ${license}.`;
-  }
-  return "";
+	return license ? `This project is licensed with ${license}.` : '';
 }
 
-// TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  if (license === "MIT") {
-    return "https://img.shields.io/badge/license-MIT-blue";
-  }
-  if (license === "BSD") {
-    return "https://img.shields.io/badge/license-BSD-blue";
-  }
-  if (license === "GPL") {
-    return "https://img.shields.io/badge/license-GPL-blue";
-  }
-  return "";
+	return license ? `https://img.shields.io/badge/license-${license}-blue` : '';
 }
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title} ![License Image](${renderLicenseLink(data.license)})
+	const {
+		title = '',
+		license = '',
+		description = '',
+		installInstructions = '',
+		usageInfo = '',
+		contribution = '',
+		testIns = '',
+		github = '',
+		email = ''
+	} = data;
 
-  ## Description
-  ${data.description}
+	// original text
+	let headerText = `# ${title} ![License Image](${renderLicenseLink(license)})`;
+	let tableOfContentsText = `## Table of Contents`;
+	let readmeText = ``;
 
-  ## Table of Contents
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Contributing](#contribution-guidelines)
-  - [License](#license)
-  - [Test](#test-instructions)
-  - [GitHub Profile](#github-profile)
-  - [Contact by Email](#email)
+	if (description)
+		headerText += `
+## Description
+${description}`;
+	if (installInstructions) {
+		readmeText += `
+## Installation
+${installInstructions}`;
+		tableOfContentsText += `
+- [Installation](#installation)`;
+	}
+	if (usageInfo) {
+		readmeText += `
+## Usage
+${usageInfo}`;
+		tableOfContentsText += `
+- [Usage](#usage)`;
+	}
+	if (contribution) {
+		readmeText += `
+## Contribution Guidelines
+  ${contribution}`;
+		tableOfContentsText += `
+- [Contributing](#contribution-guidelines)`;
+	}
+	if (license) {
+		readmeText += `
+## License
+${renderLicenseBadge(license)}`;
+		tableOfContentsText += `
+- [License](#license)`;
+	}
+	if (testIns) {
+		readmeText += `
+## Test Instructions
+${testIns}`;
+		tableOfContentsText += `
+- [Test](#test-instructions)`;
+	}
+	if (github) {
+		readmeText += `
+### GitHub Profile
+[My Profile](https://github.com/${github})`;
+		tableOfContentsText += `
+- [GitHub Profile](#github-profile)`;
+	}
+	if (email) {
+		readmeText += `
+### Email
+[${email}](mailto:${email})`;
+		tableOfContentsText += `
+- [Contact by Email](#email)`;
+	}
 
-  ## Installation
-  ${data.installInstructions}
-
-  ## Usage
-  ${data.usageInfo}
-
-  ## Contribution Guidelines
-  ${data.contribution}
-
-  ## License
-  ${renderLicenseBadge(data.license)}
-
-
-  ## Test Instructions
-  ${data.testIns}
-
-  ### GitHub Profile
-  [My Profile](https://github.com/${data.github})
-
-  ### Email
-  ${data.email}
-`;
+	return `${headerText}
+${tableOfContentsText}
+${readmeText}`;
 }
 
 module.exports = generateMarkdown;

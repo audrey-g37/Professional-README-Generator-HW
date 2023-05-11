@@ -6,11 +6,11 @@ This app prompts the user with questions in the command line and creates a READM
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-- [GitHub Profile](#github-profile)
-- [Contact by Email](#email)
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [License](#license)
+-   [GitHub Profile](#github-profile)
+-   [Contact by Email](#email)
 
 ## Installation
 
@@ -18,7 +18,11 @@ Run npm i to install necessary libraries.
 
 ## Usage
 
-To use, open the file and run 'node index.js' Answer each prompt with the exact text you wish to appear on the README. A new README will be generated in a new directory called 'Generated.' The links to your GitHub profile will be active.
+To use, open the file and run 'npm run start' Answer each prompt with the exact text you wish to appear on the README. A new README will be generated in a new directory called 'Generated.' The links to your GitHub profile and email will be hyperlinks.
+
+If a readme file exists in the Generated directory and you run through the prompts to generate a new readme, you will be prompted to overwrite the existing file or create a new one.
+
+To delete all generated files, run 'npm run delete-new-readme.'
 
 [Demo Video](https://drive.google.com/file/d/1ZSukWy5O92JTKBdPCgh9LYSvK4j_KHk-/view?usp=sharing)
 
@@ -34,4 +38,4 @@ This project is licensed with MIT.
 
 ### Email
 
-audrey.gillies@gmail.com
+[audrey.gillies@gmail.com](mailto:audrey.gillies@gmail.com)
