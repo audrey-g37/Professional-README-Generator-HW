@@ -24,7 +24,7 @@ If a readme file exists in the Generated directory and you run through the promp
 
 To delete all generated files, run 'npm run delete-new-readme.'
 
-[Demo Video](https://drive.google.com/file/d/1ZSukWy5O92JTKBdPCgh9LYSvK4j_KHk-/view?usp=sharing)
+[Demo Video](https://drive.google.com/file/d/1PDIw1hy_ub4lpTmuAAEO2o2aG2mEW_TW/view?usp=sharing)
 
 [Demo README](./Assets/README.md)
 
